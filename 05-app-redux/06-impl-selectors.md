@@ -33,4 +33,4 @@ export { default as selectColor } from "./selectColor";
 export { default as selectText } from "./selectText";
 ```
 
-NOTE: These names also need to be unique across all reducers. It may be necessary to name them something like `selectSettingsColor` and `selectSettingsText`. I usually try to avoid doing this when I can for clarity.
+NOTE: These names also need to be unique across all reducers. It may be necessary to name them something like `selectSettingsColor` and `selectSettingsText`. I usually try to avoid doing this when I can for succintness.

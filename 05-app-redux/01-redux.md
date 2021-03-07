@@ -3,7 +3,7 @@
 > **Redux**<br/>
 > A Predictable State Container for JS Apps
 
-**Redux** pioneered the concepts we just went over:
+**Redux** mainstreamed many of the concepts that are vital in modern React code:
 
 - Read
   - **immutable** global state object

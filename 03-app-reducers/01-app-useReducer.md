@@ -9,11 +9,11 @@ const initialState = {
 };
 ```
 
-Cool. Now if we have 50 properties we still only have one `state` object that we will have to pass around. We just got rid of 49 props that we need to pass around!
+Cool. Now if we have 50 properties we still only have one `state` object that we will have to pass around. We just got rid of 49 props that we no longer need to pass around!
 
 We still have to pass around 50 different `setXxx`, `setYyy` methods though. Right?
 
-Let's make any update to the state a generic object, called an "action". An action will have two properties:
+Let's make any update to the state a generic object, called an "action". An action will only have two properties:
 
 ```js
 const action = {
@@ -22,7 +22,7 @@ const action = {
 };
 ```
 
-In our current case we'll need two constants defined for action types.
+In our current case we'll need two constants defined for our action types.
 
 ```js
 const SET_TEXT = "SET_TEXT";
@@ -66,14 +66,18 @@ const reducer = (state = initialState, { type, payload }) => {
 
 We can set up the App to use a reducer to manage the state. Then we only need to pass down the `state` and the `dispatch` function to components that need it.
 
-```js
+```diff
 const App = () => {
-  const [state, dispatch] = useReducer(reducer, initialState);
+- const [text, setText] = useState("");
+- const [color, setColor] = useState("");
++ const [state, dispatch] = useReducer(reducer, initialState);
 
   return (
     <div className="container mt-3">
-      <Settings state={state} dispatch={dispatch} />
-      <Preview state={state} />
+-     <Settings text={text} setText={setText} color={color} setColor={setColor} />
+-     <Preview text={text} color={color} />
++     <Settings state={state} dispatch={dispatch} />
++     <Preview state={state} />
     </div>
   );
 };
@@ -81,21 +85,24 @@ const App = () => {
 
 Components that need to update the state, like `TextField`, just need to `dispatch` an action.
 
-```js
-const TextField = ({ state, dispatch }) => {
+```diff
+-const TextField = ({ text, setText }) => {
++const TextField = ({ state, dispatch }) => {
   return (
     <div className="form-group">
       <label>Text:</label>
       <input
         type="text"
         className="form-control"
-        value={state.text}
-        onChange={e =>
-          dispatch({
-            type: SET_TEXT,
-            payload: e.target.value,
-          })
-        }
+-       value={text}
++       value={state.text}
+-       onChange={e => setText(e.target.value)}
++       onChange={e =>
++         dispatch({
++           type: SET_TEXT,
++           payload: e.target.value,
++         })
++       }
       />
     </div>
   );

@@ -57,7 +57,7 @@ The end result is that this series of transforms is finding the 'last alphabetic
 - Original array contained 5 items
 - `.map(upper)` - created a new array with 5 items
 - `.map(consonants)` - created a new array with 5 items
-- `.map(split)` - create a new array with 5 items
+- `.map(split)` - created a new array with 5 items
 - `.map(sort)` - created a new array with 5 items
 - `.map(tail)` - created a new array with 5 items
 
@@ -127,7 +127,7 @@ into:
 
 ```js
 const lastConsonant = compose(tail, sort, split, consonants, upper);
-//                    output ⇦⇩ ⇧⇦⇩  ⇧⇦⇩    ⇧⇦⇩        ⇧⇦⇩   ⇧⇦ input
+//                   output ⇦⇩  ⇧⇦⇩  ⇧⇦⇩    ⇧⇦⇩        ⇧⇦⇩   ⇧⇦ input
 ```
 
 The `compose` function reads from right to left (R2L), much like the associate (inline) form that it is replacing. It often feels a little awkward to have to think about the compose function reading R2L. The same function can be written reading the opposite direction and this is typically known as a `pipe` function since the data is piped from one function to the next.
@@ -142,5 +142,5 @@ With the `pipe` function we could rewrite `lastConsonant` as:
 
 ```js
 const lastConsonant = pipe(upper, consonants, split, sort, tail);
-//                  input ⇨⇧  ⇩⇨⇧        ⇩⇨⇧    ⇩⇨⇧  ⇩⇨⇧  ⇩⇨ output
+//                 input ⇨⇧   ⇩⇨⇧        ⇩⇨⇧    ⇩⇨⇧  ⇩⇨⇧  ⇩⇨ output
 ```

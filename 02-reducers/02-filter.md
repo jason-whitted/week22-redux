@@ -48,7 +48,7 @@ Lets first walk through what this is doing.
 | --------------------------- | --------------------------------------------------- |
 | `array`                     | `["apple", "banana", "carrot", "date", "eggplant"]` |
 | `.filter(noEggplants)`      | `["apple", "banana", "carrot", "date"]`             |
-| `.filter(noO)`              | `["apple", "banana", "date",]`                      |
+| `.filter(noO)`              | `["apple", "banana", "date"]`                      |
 | `.filter(noShorties)`       | `["apple", "banana"]`                               |
 | `.filter(noElppaBackwards)` | `["banana"]`                                        |
 | `.filter(noFalsy)`          | `["banana"]`                                        |
@@ -82,13 +82,8 @@ const and = (...fns) => x => fns.every(fn => fn(x));
 The we could rewrite `nannersOnly` as:
 
 ```js
-const nannersOnly = and(
-  noEggplants,
-  noO,
-  noShorties,
-  noElppaBackwards,
-  noFalsy
-);
+// prettier-ignore
+const nannersOnly = and(noEggplants, noO, noShorties, noElppaBackwards, noFalsy);
 ```
 
 Just like our first solution, the end result filters out everything except the "banana".

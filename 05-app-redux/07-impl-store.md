@@ -38,18 +38,46 @@ export default combineReducers({
 NOTE: This is the reason that our selector functions looked like this:
 
 ```js
+// Right! Here `state` is the GLOBAL state.
 export default state => state.settings.text;
 ```
 
 instead of:
 
 ```js
+// WRONG!
 export default state => state.text;
 ```
 
-And finally we can create the Redux store and export it (and everything else)!
+But inside of the settings reducer we referred to just:
+```js
+// Right!  Here `state` is the LOCAL state.
+// (i.e. just the `settings` portion of the GLOBAL state)
+return {
+  ...state,
+  color: payload,
+};
+```
+
+Instead of:
+```js
+// WRONG!
+return {
+  ...state,
+  settings: {
+    ...state.settings,
+    color: payload,
+  }
+}
+```
+
+TL;DR
+- In a `reducer` the state is LOCAL
+- In a `selector` the state is GLOBAL
+
 
 ### `store/index.js`
+And finally we can create the Redux store and export it (and everything else)!
 
 ```js
 import { createStore } from "redux";

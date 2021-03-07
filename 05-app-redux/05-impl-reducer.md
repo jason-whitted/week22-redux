@@ -17,11 +17,33 @@ export default {
 
 For the reducer we need to import all of the constants and also the initial state.
 
-On the first call to the reducer the `state` may be `undefined`. We can default it to `initialState`.
+On the first call to the reducer the current `state` may be `undefined`. We can default it to `initialState`.
 
 The second parameter is the action. Every action consists of two properties (`type` and `payload`) and we can just destructure them here.
 
-The reducer should **_NEVER_** mutate the state object. Use object rest/spread to return a new object.
+The reducer should **_NEVER_** mutate the state object!
+- Do NOT use assignment statements (=, +=, ++, etc.)
+- Do NOT push, pop, shift, unshift, or splice an array that is in state
+- Use object rest/spread to return a new object
+- Use array.filter to remove items from an array
+- Use array rest/spread operators to add items to an array
+
+```js
+// BAD!
+state.name = "Bob";
+state.age++;
+state.likes.push("apples");
+return state;
+```
+```js
+// Good!
+return {
+  ...state,
+  name: "Bob",
+  age: state.age + 1,
+  likes: [...state.likes, "apples"],
+};
+```
 
 The reducer should **_ALWAYS_** return a state object. Don't forget your `default` case!
 

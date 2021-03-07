@@ -4,6 +4,7 @@
 
 The `react-redux` library provides a `Provider` which manages the context for us. This is typically added in the root index.js file.
 
+### `index.js`
 ```js
 import React from "react";
 import ReactDOM from "react-dom";
