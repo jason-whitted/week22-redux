@@ -138,3 +138,18 @@ rules: {
 + "no-plusplus": "off",
   "prettier/prettier": "error",
 ```
+
+Sometimes prettier will format your code and actually make it ugglier.
+
+You can tell prettier to leave a single statement alone using:
+```js
+// prettier-ignore
+const result = ['', null, '123', '3.14']
+  .filter(Boolean)
+  .map(Number);
+```
+
+Without this line, prettier may format it as:
+```js
+const result = ["", null, "123", "3.14"].filter(Boolean).map(Number);
+```
