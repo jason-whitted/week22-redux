@@ -14,7 +14,7 @@ const result = array
   .map(str => str.toUpperCase())
   .map(str => str.replace(/[aeiou]/gi, ""))
   .map(str => str.split(""))
-  .map(str => str.sort())
+  .map(arr => arr.sort())
   .map(arr => arr[arr.length - 1]);
 ```
 

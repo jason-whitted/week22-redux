@@ -37,7 +37,8 @@ return (
 The `Settings` component didn't care about the state before. Now it needs to be updated to relay these properties down the chain.
 
 ```diff
-const Settings = ({ text, setText, color, setColor }) => {
+-const Settings = () => {
++const Settings = ({ text, setText, color, setColor }) => {
   return (
     <div className="card mb-3">
       <div className="card-header">Settings</div>

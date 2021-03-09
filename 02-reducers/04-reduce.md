@@ -43,7 +43,7 @@ Iterations:
 ### Max Value
 
 ```js
-const max = (a, b) => (a < b ? a : b);
+const max = (a, b) => (a > b ? a : b);
 const numbers = [1, -1, 2, -3, 5, -8];
 const result = numbers.reduce(max, Number.MIN_VALUE);
 ```
